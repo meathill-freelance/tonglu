@@ -1,0 +1,36 @@
+{
+  "name": "tonglu-official-site",
+  "version": "0.1.0",
+  "description": "An official site theme for Tonglu based on WordPress.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "stylus": "stylus ./stylus/screen.styl -o ../style.css -w",
+    "dev": "gulp watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:meathill-freelance/tonglu.git"
+  },
+  "keywords": [
+    "wordpress",
+    "theme",
+    "responsive",
+    "design"
+  ],
+  "author": "Meathill <meathill@gmail.com> (http://meathill.com/)",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "colors.css": "^3.0.0"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "gulp": "^4.0.0",
+    "gulp-pug": "^4.0.1",
+    "gulp-rename": "^1.2.3",
+    "gulp-stylus": "^2.7.0"
+  }
+}
