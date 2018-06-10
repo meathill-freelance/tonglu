@@ -1,0 +1,66 @@
+- var base = "/wp-content/themes/tonglu";
+- var ui = base + '/ui-src';
+
+doctype html
+html(lang="zh-cmn-Hans")
+  head
+    meta(charset="UTF-8")
+    title #{title}
+    meta(name="keywords", content="#{keywords}")
+    meta(name="description", content="#{description}")
+    meta(name="author", content="Meathill, meathill@gmail.com")
+
+    meta(name="renderer", content="webkit")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
+    meta(http-equiv="Cache-Control", content="no-siteapp")
+    meta(name="viewport", content="initial-scale=1, user-scalable=no")
+    meta(name="format-detection", content="telephone=no")
+    meta(name="screen-orientation", content="portrait")
+    meta(name="google", value="notranslate")
+
+    link(rel="shortcut icon", type="image/png", href=ui + "/img/favicon.png")
+    link(rel="stylesheet", href=ui + "/node_modules/bootstrap/dist/css/bootstrap.min.css")
+    link(rel="stylesheet", href=base + "/style.css")
+
+  body
+    header#header.container
+      nav.navbar.navbar-light
+        h1.visually-hidden 通路有家
+        input#navbar-toggler.hide(type="checkbox")
+        a.navbar-brand
+          img.no-lazy.logo(src=base + "/img/logo.png")
+        label.navbar-toggler(
+          for="navbar-toggler",
+          data-toggle="collapse",
+          data-target="#navbar",
+          aria-controls="#navbar",
+          aria-label="展开",
+        )
+          span.navbar-toggler-icon
+
+        ul.navbar-nav
+          li.nav-item.active
+            a
+              span.cn 首页
+              span.en Home
+          li.nav-item
+            a
+              span.cn 业务介绍
+              span.en Business
+          li.nav-item
+            a
+              span.cn 经典案例
+              span.en Case
+          li.nav-item
+            a
+              span.cn 楼盘展示
+              span.en Houses
+          li.nav-item
+            a
+              span.cn 新闻中心
+              span.en News
+
+
+    block content
+
+    include footer
