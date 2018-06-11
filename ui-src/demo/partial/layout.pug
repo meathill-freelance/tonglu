@@ -40,23 +40,34 @@ html(lang="zh-cmn-Hans")
 
         ul.navbar-nav
           li.nav-item.active
-            a(href="")
+            a.nav-link(href="")
               span.cn 首页
               span.en Home
-          li.nav-item
-            a(href="business")
+          li.nav-item.dropdown
+            a#about-us.nav-link.dropdown-toggle(
+              href="business",
+              role="button",
+              data-toggle="dropdown",
+              aria-haspopup="true",
+              aria-expanded="false",
+            )
               span.cn 业务介绍
               span.en Business
+            .dropdown-menu(aria-labelledby="about-us")
+              .container
+                a.dropdown-item.active 公司介绍
+                a.dropdown-item 海外房产销售
+                a.dropdown-item 公寓运营代理
           li.nav-item
-            a(href="case")
+            a.nav-link(href="case")
               span.cn 经典案例
               span.en Case
           li.nav-item
-            a(href="houses")
+            a.nav-link(href="houses")
               span.cn 楼盘展示
               span.en Houses
           li.nav-item
-            a(href="news")
+            a.nav-link(href="news")
               span.cn 新闻中心
               span.en News
 
