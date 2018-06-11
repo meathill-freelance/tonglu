@@ -6,8 +6,8 @@ html(lang="zh-cmn-Hans")
   head
     meta(charset="UTF-8")
     title #{title}
-    meta(name="keywords", content="#{keywords}")
-    meta(name="description", content="#{description}")
+    meta(name="keywords", content=keywords)
+    meta(name="description", content=description)
     meta(name="author", content="Meathill, meathill@gmail.com")
 
     meta(name="renderer", content="webkit")
@@ -40,23 +40,23 @@ html(lang="zh-cmn-Hans")
 
         ul.navbar-nav
           li.nav-item.active
-            a
+            a(href="")
               span.cn 首页
               span.en Home
           li.nav-item
-            a
+            a(href="business")
               span.cn 业务介绍
               span.en Business
           li.nav-item
-            a
+            a(href="case")
               span.cn 经典案例
               span.en Case
           li.nav-item
-            a
+            a(href="houses")
               span.cn 楼盘展示
               span.en Houses
           li.nav-item
-            a
+            a(href="news")
               span.cn 新闻中心
               span.en News
 
