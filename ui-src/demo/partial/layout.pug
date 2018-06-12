@@ -22,55 +22,67 @@ html(lang="zh-cmn-Hans")
     link(rel="stylesheet", href=ui + "/node_modules/bootstrap/dist/css/bootstrap.min.css")
     link(rel="stylesheet", href=base + "/style.css")
 
-  body
-    header#header.container
-      nav.navbar.navbar-light
-        h1.visually-hidden 通路有家
-        input#navbar-toggler.hide(type="checkbox")
-        a.navbar-brand
-          img.no-lazy.logo(src=base + "/img/logo.png")
-        label.navbar-toggler(
-          for="navbar-toggler",
-          data-toggle="collapse",
-          data-target="#navbar",
-          aria-controls="#navbar",
-          aria-label="展开",
-        )
-          span.navbar-toggler-icon
+  body.article
+    header#header
+      .container
+        nav.navbar.navbar-light
+          h1.visually-hidden 通路有家
+          input#navbar-toggler.hide(type="checkbox")
+          a.navbar-brand
+            img.no-lazy.logo(src=base + "/img/logo.png")
 
-        ul.navbar-nav
-          li.nav-item.active
-            a.nav-link(href="")
-              span.cn 首页
-              span.en Home
-          li.nav-item.dropdown
-            a#about-us.nav-link.dropdown-toggle(
-              href="business",
-              role="button",
-              data-toggle="dropdown",
-              aria-haspopup="true",
-              aria-expanded="false",
-            )
-              span.cn 业务介绍
-              span.en Business
-            .dropdown-menu(aria-labelledby="about-us")
-              .container
-                a.dropdown-item.active 公司介绍
-                a.dropdown-item 海外房产销售
-                a.dropdown-item 公寓运营代理
-          li.nav-item
-            a.nav-link(href="case")
-              span.cn 经典案例
-              span.en Case
-          li.nav-item
-            a.nav-link(href="houses")
-              span.cn 楼盘展示
-              span.en Houses
-          li.nav-item
-            a.nav-link(href="news")
-              span.cn 新闻中心
-              span.en News
+          #lang.dropdown
+            button#lang-dropdown.btn.btn-outline-secondary.dropdown-toggle(
+            type="button",
+            data-toggle="dropdown",
+            aria-haspopup="true",
+            aria-expanded="false",
+            ) 中文
+            .dropdown-menu(aria-labelledby="lang-dropdown")
+              .dropdown-item 中文
+              .dropdown-item English
 
+          label.navbar-toggler(
+            for="navbar-toggler",
+            data-toggle="collapse",
+            data-target="#navbar",
+            aria-controls="#navbar",
+            aria-label="展开",
+          )
+            span.navbar-toggler-icon
+
+          ul.navbar-nav
+            li.nav-item.active
+              a.nav-link(href="")
+                span.cn 首页
+                span.en Home
+            li.nav-item.dropdown
+              a#about-us.nav-link.dropdown-toggle(
+                href="business",
+                role="button",
+                data-toggle="dropdown",
+                aria-haspopup="true",
+                aria-expanded="false",
+              )
+                span.cn 业务介绍
+                span.en Business
+              .dropdown-menu(aria-labelledby="about-us")
+                .container
+                  a.dropdown-item.active 公司介绍
+                  a.dropdown-item 海外房产销售
+                  a.dropdown-item 公寓运营代理
+            li.nav-item
+              a.nav-link(href="case")
+                span.cn 经典案例
+                span.en Case
+            li.nav-item
+              a.nav-link(href="houses")
+                span.cn 楼盘展示
+                span.en Houses
+            li.nav-item
+              a.nav-link(href="news")
+                span.cn 新闻中心
+                span.en News
 
     block content
 
