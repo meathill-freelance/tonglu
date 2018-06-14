@@ -1,0 +1,94 @@
+.location-list
+  padding 0
+  margin 30px 0 70px
+  display flex
+  list-style none
+
+  li
+    flex 1
+    background-size cover
+    background-position center
+    height 190px
+    display flex
+    flex-direction column
+    justify-content center
+    align-items center
+    color white
+    border-radius 10px
+    box-shadow 0 5px 10px rgba(0,0,0,.2)
+    position relative
+    cursor pointer
+
+    &::before
+      content ''
+      position absolute
+      top 0
+      left 0
+      width 100%
+      height 100%
+      background-color rgba(0,0,0,.8)
+      border-radius 10px
+      z-index 0
+      opacity 1
+      transition opacity .5s
+
+    + li
+      margin-left 15px
+
+    h2,
+    h3
+      position relative
+      z-index 5
+
+    &:hover,
+    &.active
+      &::before
+        opacity 0
+
+.location
+  > h1
+    border-bottom 1px solid #979797
+    padding-bottom .5em
+    margin-bottom 0
+
+.house-list
+  margin 0
+  padding 0
+  list-style none
+
+  .house-item
+    display flex
+    font-size 20px
+    font-weight 100
+    padding 20px 0
+
+    .thumbnail
+      width 450px
+      margin-right 35px
+
+    article
+      flex 1
+      display flex
+      flex-direction column
+
+    h1
+      font-size 30px
+
+    address
+      color #999
+
+    .price
+      color $price-color
+      font-size 1.5em
+      font-weight bold
+      margin-top auto
+      text-align right
+
+    .info .price
+      font-size 1em
+
+  img
+    width 100%
+    height 300px
+    object-fit cover
+    object-position center
