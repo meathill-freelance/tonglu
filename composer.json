@@ -1,0 +1,15 @@
+{
+    "name": "meathill/tonglu",
+    "type": "project",
+    "require": {
+        "mustache/mustache": "~2.12"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Meathill",
+            "email": "meathill@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}

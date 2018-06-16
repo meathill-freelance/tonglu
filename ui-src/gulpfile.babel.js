@@ -26,8 +26,16 @@ gulp.task('watch', () => {
   gulp.watch('stylus/**/*.styl', gulp.parallel('stylus'));
 });
 
-gulp.task('default', gulp.parallel(
-  'pug',
-  'stylus',
+gulp.task('template', async () => {
+
+});
+
+gulp.task('default', gulp.series(
+  gulp.parallel(
+    'pug',
+    'stylus',
+    taskDone => taskDone(),
+  ),
+  'template',
   taskDone => taskDone(),
 ));
