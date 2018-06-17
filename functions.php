@@ -33,3 +33,37 @@ if (!function_exists('tonglu_setup')) {
   }
 }
 add_action('after_setup_theme', 'tonglu_setup');
+
+if (!function_exists('tonglu_bootstrap_nav')) {
+  function tonglu_bootstrap_nav() {
+    global $wp_query;
+    $queried_object_id = (int) $wp_query->queried_object_id;
+    $queried_object = $wp_query->get_queried_object();
+    $menu_name = 'primary'; // specify custom menu slug
+    if (($locations = get_nav_menu_locations()) && isset($locations[$menu_name])) {
+      $menu = wp_get_nav_menu_object($locations[$menu_name]);
+      $menu_items = wp_get_nav_menu_items($menu->term_id);
+
+      $menu_list = '<ul class="navbar-nav">';
+      foreach ((array) $menu_items as $key => $menu_item) {
+        $title = $menu_item->title;
+        $url = $menu_item->url;
+        $is_active = '';
+        if ($menu_item->object_id == $queried_object_id &&
+          (
+            ( ! empty( $home_page_id ) && 'post_type' == $menu_item->type && $wp_query->is_home && $home_page_id == $menu_item->object_id ) ||
+            ( 'post_type' == $menu_item->type && $wp_query->is_singular ) ||
+            ( 'taxonomy' == $menu_item->type && ( $wp_query->is_category || $wp_query->is_tag || $wp_query->is_tax ) && $queried_object->taxonomy == $menu_item->object )
+          )
+        ) {
+          $is_active = ' active';
+        }
+        $menu_list .= '<li class="nav-item' . $is_active . '"><a class="nav-link" href="'. $url .'"><span class="cn">'. $title .'</span><span class="en">' . $menu_item->attr_title . '</span></a></li>' ."\n";
+      }
+      $menu_list .= '</ul>' ."\n";
+    } else {
+      // $menu_list = '<!-- no list defined -->';
+    }
+    return $menu_list;
+  }
+}

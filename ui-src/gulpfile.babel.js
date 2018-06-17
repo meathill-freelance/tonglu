@@ -6,6 +6,8 @@ import rename from 'gulp-rename';
 import {readFile, readDir} from './helper/fs';
 import html2tpl from './helper/html2tpl';
 
+/* global __dirname */
+
 gulp.task('pug', () => {
   return gulp.src('demo/*.pug')
     .pipe(pug({
@@ -31,13 +33,13 @@ gulp.task('watch', () => {
 gulp.task('template', async () => {
   const content = await readFile(path.resolve(__dirname, 'html/homepage.html'), 'utf8');
   let [header, body, footer] = content.split('<!--split-->');
-  header = await html2tpl(header, path.resolve(__dirname, 'template/header.html'));
-  footer = await html2tpl(footer, path.resolve(__dirname, 'template/footer.html'));
+  await html2tpl(header, path.resolve(__dirname, '../template/header.html'));
+  await html2tpl(footer, path.resolve(__dirname, '../template/footer.html'));
   const files = await readDir(path.resolve(__dirname, 'html'), /\.html$/);
   await files.map(async file => {
     const content = await readFile(path.resolve(__dirname, `html/${file}`), 'utf8');
     let [header, body, footer] = content.split('<!--split-->');
-    await html2tpl(body, `template/${file}`);
+    await html2tpl(body, `../template/${file}`);
   });
 });
 

@@ -6,3 +6,4 @@ node_modules
 ui-src/html
 ui-src/template
 /vendor/
+/template

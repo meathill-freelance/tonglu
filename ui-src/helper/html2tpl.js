@@ -10,8 +10,9 @@ import {exists, mkdir, writeFile} from './fs';
  * @returns {string}
  */
 export default async function (html, file) {
-  html = html.replace(/<\!--(\{\{\w+\}\})-->/g, (match, key) => key);
+  html = html.replace(/<\!--(\{{2,3}\w+\}{2,3})-->/g, (match, key) => key);
   html = html.replace(/\b_{4}(\w+)\b/g, (match, key) => `{{${key}}}`);
+  html = html.replace(/\/wp\-content\/themes\/tonglu\//g, '{{theme_url}}/');
 
   const path = file.substr(0, file.lastIndexOf('/') + 1);
   if (!exists(path)) {

@@ -5,9 +5,9 @@ doctype html
 html(lang="zh-cmn-Hans")
   head
     meta(charset="UTF-8")
-    title #{title}
-    meta(name="keywords", content=keywords)
-    meta(name="description", content=description)
+    title {{title}}
+    meta(name="keywords", content="{{keywords}}")
+    meta(name="description", content="{{description}}")
     meta(name="author", content="Meathill, meathill@gmail.com")
 
     meta(name="renderer", content="webkit")
@@ -18,18 +18,18 @@ html(lang="zh-cmn-Hans")
     meta(name="screen-orientation", content="portrait")
     meta(name="google", value="notranslate")
 
-    <!--{{wp_head}}-->
-    link(rel="shortcut icon", type="image/png", href=ui + "/img/favicon.png")
-    link(rel="stylesheet", href=ui + "/node_modules/bootstrap/dist/css/bootstrap.min.css")
+    <!-- wp_head -->
+    link(rel="shortcut icon", type="image/png", href=base + "/img/favicon.png")
+    link(rel="stylesheet", href="//cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css")
     link(rel="stylesheet", href=base + "/style.css")
 
-  body.house.____class
+  body.____body_class
     header#header
       .container
         nav.navbar.navbar-light
           h1.visually-hidden 通路有家
           input#navbar-toggler.hide(type="checkbox")
-          a.navbar-brand
+          a.navbar-brand(href="{{home_url}}")
             img.no-lazy.logo(src=base + "/img/logo.png")
 
           #lang.dropdown
@@ -52,39 +52,7 @@ html(lang="zh-cmn-Hans")
           )
             span.navbar-toggler-icon
 
-          ul.navbar-nav
-            li.nav-item.active
-              a.nav-link(href="")
-                span.cn 首页
-                span.en Home
-            li.nav-item.dropdown
-              a#about-us.nav-link.dropdown-toggle(
-                href="business",
-                role="button",
-                data-toggle="dropdown",
-                aria-haspopup="true",
-                aria-expanded="false",
-              )
-                span.cn 业务介绍
-                span.en Business
-              .dropdown-menu(aria-labelledby="about-us")
-                .container
-                  a.dropdown-item.active 公司介绍
-                  a.dropdown-item 海外房产销售
-                  a.dropdown-item 公寓运营代理
-            li.nav-item
-              a.nav-link(href="case")
-                span.cn 经典案例
-                span.en Case
-            li.nav-item
-              a.nav-link(href="houses")
-                span.cn 楼盘展示
-                span.en Houses
-            li.nav-item
-              a.nav-link(href="news")
-                span.cn 新闻中心
-                span.en News
-
+          | {{{nav}}}
     <!--split-->
     block content
 

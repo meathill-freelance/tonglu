@@ -1,6 +1,7 @@
 {
     "name": "meathill/tonglu",
     "type": "project",
+    "version": "1.0.0",
     "require": {
         "mustache/mustache": "~2.12"
     },
