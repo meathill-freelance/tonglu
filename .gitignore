@@ -4,4 +4,5 @@ node_modules
 # dev
 /style.css
 ui-src/html
+ui-src/template
 /vendor/

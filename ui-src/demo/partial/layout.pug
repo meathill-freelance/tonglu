@@ -18,11 +18,12 @@ html(lang="zh-cmn-Hans")
     meta(name="screen-orientation", content="portrait")
     meta(name="google", value="notranslate")
 
+    <!--{{wp_head}}-->
     link(rel="shortcut icon", type="image/png", href=ui + "/img/favicon.png")
     link(rel="stylesheet", href=ui + "/node_modules/bootstrap/dist/css/bootstrap.min.css")
     link(rel="stylesheet", href=base + "/style.css")
 
-  body.house
+  body.house.____class
     header#header
       .container
         nav.navbar.navbar-light
@@ -84,6 +85,8 @@ html(lang="zh-cmn-Hans")
                 span.cn 新闻中心
                 span.en News
 
+    <!--split-->
     block content
 
+    <!--split-->
     include footer

@@ -3,6 +3,8 @@ import gulp from 'gulp';
 import pug from 'gulp-pug';
 import stylus from 'gulp-stylus';
 import rename from 'gulp-rename';
+import {readFile, readDir} from './helper/fs';
+import html2tpl from './helper/html2tpl';
 
 gulp.task('pug', () => {
   return gulp.src('demo/*.pug')
@@ -27,15 +29,26 @@ gulp.task('watch', () => {
 });
 
 gulp.task('template', async () => {
-
+  const content = await readFile(path.resolve(__dirname, 'html/homepage.html'), 'utf8');
+  let [header, body, footer] = content.split('<!--split-->');
+  header = await html2tpl(header, path.resolve(__dirname, 'template/header.html'));
+  footer = await html2tpl(footer, path.resolve(__dirname, 'template/footer.html'));
+  const files = await readDir(path.resolve(__dirname, 'html'), /\.html$/);
+  await files.map(async file => {
+    const content = await readFile(path.resolve(__dirname, `html/${file}`), 'utf8');
+    let [header, body, footer] = content.split('<!--split-->');
+    await html2tpl(body, `template/${file}`);
+  });
 });
 
+gulp.task('build', gulp.parallel(
+  'pug',
+  'stylus',
+  taskDone => taskDone(),
+));
+
 gulp.task('default', gulp.series(
-  gulp.parallel(
-    'pug',
-    'stylus',
-    taskDone => taskDone(),
-  ),
+  'build',
   'template',
   taskDone => taskDone(),
 ));
