@@ -43,12 +43,26 @@ if (!function_exists('tonglu_bootstrap_nav')) {
     if (($locations = get_nav_menu_locations()) && isset($locations[$menu_name])) {
       $menu = wp_get_nav_menu_object($locations[$menu_name]);
       $menu_items = wp_get_nav_menu_items($menu->term_id);
+      $menu_items = array_map(function ($item) {
+        $item->children = [];
+        return $item;
+      }, (array) $menu_items);
+      $menu_items = array_combine(array_column($menu_items, 'ID'), $menu_items);
 
       $menu_list = '<ul class="navbar-nav">';
-      foreach ((array) $menu_items as $key => $menu_item) {
+
+      foreach ($menu_items as $menu_item) {
+        if ($menu_item->menu_item_parent) {
+          $menu_items[$menu_item->menu_item_parent]->children[] = $menu_item;
+        }
+      }
+      foreach ($menu_items as $menu_item) {
+        if ($menu_item->menu_item_parent) {
+          continue;
+        }
         $title = $menu_item->title;
         $url = $menu_item->url;
-        $is_active = '';
+        $is_active = $dropdown = '';
         if ($menu_item->object_id == $queried_object_id &&
           (
             ( ! empty( $home_page_id ) && 'post_type' == $menu_item->type && $wp_query->is_home && $home_page_id == $menu_item->object_id ) ||
@@ -58,7 +72,22 @@ if (!function_exists('tonglu_bootstrap_nav')) {
         ) {
           $is_active = ' active';
         }
-        $menu_list .= '<li class="nav-item' . $is_active . '"><a class="nav-link" href="'. $url .'"><span class="cn">'. $title .'</span><span class="en">' . $menu_item->attr_title . '</span></a></li>' ."\n";
+        if (count($menu_item->children) > 0) {
+          $dropdown = ' dropdown';
+        }
+        $menu_list .= '<li class="nav-item' . $dropdown . $is_active . '">
+<a class="nav-link' . ($dropdown ? ' dropdown-toggle' : '') . '" href="'. $url .'" role="button" ' . ($dropdown ? 'data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"' : '') . '>
+  <span class="cn">'. $title .'</span>
+  <span class="en">' . $menu_item->attr_title . '</span>
+</a>';
+        if ($dropdown) {
+          $menu_list .= '<div class="dropdown-menu" aria-labelledby="' . $menu_item->attr_title . '"><div class="container">';
+          foreach ($menu_item->children as $item) {
+            $menu_list .= '<a class="dropdown-item" href="' . $item->url . '">' . $item-> title .'</a>';
+          }
+          $menu_list .= '</div></div>';
+        }
+        $menu_list .= '</li>' . "\n";
       }
       $menu_list .= '</ul>' ."\n";
     } else {
