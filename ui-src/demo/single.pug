@@ -1,0 +1,24 @@
+extends partial/layout
+
+block content
+  <!--{{#thumbnail}}-->
+  .banner(style="background-image:url({{thumbnail}})")
+  <!--{{/thumbnail}}-->
+
+  nav.container(aria-label="breadcrumb")
+    ol.breadcrumb
+      li.breadcrumb-item
+        a(href="/") 首页
+      li.breadcrumb-item {{{category}}}
+      li.breadcrumb-item.active(aria-current="page") {{full_title}}
+
+  section.article.container
+    header
+      h1 {{full_title}}
+      p.info {{date}}
+
+    <!--{{#excerpt}}-->
+    blockquote {{{excerpt}}}
+    <!--{{/excerpt}}-->
+
+    article {{{content}}}

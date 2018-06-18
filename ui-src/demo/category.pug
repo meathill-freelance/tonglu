@@ -1,0 +1,19 @@
+extends partial/layout
+
+block content
+  <!--{{#thumbnail}}-->
+  .banner.article.mb-2(style="background-image: url({{thumbnail}})")
+  <!--{{/thumbnail}}-->
+
+  .container
+    ul.article-list
+      <!--{{#blog}}-->\
+      li.article-item
+        .thumbnail
+          img(src="{{thumbnail}}")
+        article.article
+          h2
+            a(href="{{link}}") {{full_title}}
+          article.digest {{{excerpt}}}
+          p.info {{date}}
+      <!--{{/blog}}-->

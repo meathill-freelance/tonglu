@@ -19,7 +19,7 @@ ob_end_clean();
 $home_url = esc_url(home_url('/', is_ssl() ? 'https' : 'http'));
 $result = [
   'wp_footer' => $wp_footer,
-  'theme_url' => str_replace($home_url, '', get_theme_root_uri()) . '/' . get_template(),
+  'theme_url' => get_theme_root_uri() . '/' . get_template(),
 ];
 $template = dirname(__FILE__) . '/template/footer.html';
 $template = file_get_contents($template);

@@ -1,29 +1,40 @@
 .breadcrumb
   background-color transparent
   padding 30px 0
+  margin-bottom 0
 
-  .article & a
-    color $black
+  .article &,
+  .single &
+    a
+      color $black
 
-    &:hover
-      color $active-color
+      &:hover
+        color $active-color
 
-article.article
+section.article,
+.single .article
   font-size 1.5rem
   font-weight 200
+  margin-bottom 2em
+
+  header
+    margin-bottom 2em
 
   h1
     font-size 30px
+    line-height 2
+    text-align center
 
   .info
     color #999
     font-size 1rem
+    text-align center
 
   blockquote
     font-size 1rem
     font-weight 100
     padding-bottom 1.5rem
-    margin-bottom 1.5rem
+    margin 1.5rem 0
     border-bottom 1px solid #F3F3F3
 
   img
@@ -36,7 +47,3 @@ article.article
     &:last-child
       margin-bottom 0q
 
-  .single &
-    h1,
-    .info
-      text-align center

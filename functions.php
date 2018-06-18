@@ -12,6 +12,7 @@ if (!function_exists('tonglu_setup')) {
     add_theme_support( 'title-tag' );
     add_theme_support( 'post-thumbnails' );
     set_post_thumbnail_size( 1440, 120, true );
+    add_theme_support('category-thumbnails');
 
     register_nav_menus([
       'primary' => '主导航',
