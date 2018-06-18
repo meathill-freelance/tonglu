@@ -7,97 +7,72 @@ block content
         li.breadcrumb-item
           a(href="/") 首页
         li.breadcrumb-item
-          a(href="/news") 新闻展示
-        li.breadcrumb-item.active(aria-current="page") 海外买房第一站，普吉岛，座无虚席，当日成交28套
+          a(href="/house") 楼盘展示
+        <!--{{#category}}-->
+        li.breadcrumb-item {{{category}}}
+        <!--{{/category}}
+        li.breadcrumb-item.active(aria-current="page") {{{full_title}}}
 
     .container
-      h1 【曼谷】 The Excel Hideaway Sukhumvit 71 海德威71号
+      h1 {{{full_title}}}
 
     .container.showcase
-      .slide
-        img.main(src="../../img/banner.jpg")
-        ul.img-list
-          li.active
-            img(src="../../img/banner.jpg")
-          li
-            img(src="../../img/banner.jpg")
-          li
-            img(src="../../img/banner.jpg")
-          li
-            img(src="../../img/banner.jpg")
-          li
-            img(src="../../img/banner.jpg")
+      #main-slide.carousel.slide(data-ride="carousel")
+        .carousel-inner
+          <!--{{#slides}}-->
+          .carousel-item(class="{{#is_first}}active{{/is_first}}", style="background-image:url({{url}})")
+          <!--{{/slides}}-->
+        a.carousel-control-prev(href="#main-slide", role="button", data-slide="prev")
+          span.fa.fa-chevron-left(aria-hidden="true")
+          span.sr-only Previous
+        a.carousel-control-next(href="#main-slide", role="button", data-slide="next")
+          span.fa.fa-chevron-right(aria-hidden="true")
+          span.sr-only Next
+        ol.carousel-indicators
+          <!--{{#slides}}-->
+          li(class="{{#is_first}}active{{/is_first}}", data-target="#main-slide" data-slide-to="{{key}}", style="background-image:url({{url}})")
+          <!--{{/slides}}-->
       .summary
         header
-          .price 1640~4770
-            .unit 万泰铢
-          p.convert-to-rmb 约合人民币：￥300~900万
+          .price {{price}}
+            small.unit {{unit}}
+          p.convert-to-rmb 约合人民币：{{rmb}}
           .tags
-            .tag 用求产权
-            .tag 可贷款
-            .tag 首付20%
-            .tag 全套硬装
-          p 曼谷素坤逸主干道投资入门首选（包租3年、送家具家电、免全套过户费）
+            <!--{{#tags}}-->
+            span.tag {{.}}
+            <!--{{/tags}}-->
+            <!--remove-start-->
+            span.tag 用求产权
+            span.tag 可贷款
+            span.tag 首付20%
+            span.tag 全套硬装
+            <!--remove-end-->
+          p {{recommend}}
         .body
           table
             tr
-              th 年均租金
+              th(width="30%") 年均租金
               th 近一年涨幅
             tr
-              td 4%
-              td 6~8% 以不同户型楼层为准
+              td {{rent}}
+              td {{growth}} <small>以不同户型楼层为准</small>
           h3 项目地址
-          p 5 Saladaeng soi 1 , Rama IV Rd., Silom , Bangrak , Bangkok 10500 Thailand
+          p {{address}}
           h3 主力户型
-          p 1房1卫：50-57 ㎡；2房2卫：110-127 ㎡；2房3卫复式：110-127 ㎡；3房5卫： 227.1 ㎡
-          hr
+          p {{main_door}}
 
         footer
-          a.btn.btn-primary 预约咨询
+          a.btn.btn-primary(href="#") 预约咨询
           div
-            | 免费电话
+            span 免费电话
             br
-            | 400 523 4521 转 12345
+            span.phone-num 400 523 4521 转 12345
 
   .container
     .details
-      article
-        section
-          h2 开发商背景
-          p.lead All Inspire Development Co.,Ltd. 集团所有项目均集中于BTS 沿线，由于集团选址，均选择轻轨可以步行到达距离，并且总价均在250万泰铢（50万人民币）左右，很适合大部分普通民众以及初级投资者投资，所以集团所开发项目均在开盘或事建成后即告售罄。
-          table
-            tr
-              th 规划面积：
-              td 31413万平方米
-              th 产权年限：
-              td 永久产权
-            tr
-              th 户数：
-              td 5624
-              th 交房日期：
-              td 2019年第三季度
-        section
-          h2 项目配套
-          p
-            img(src="../../img/banner.jpg")
-          ol
-            li 豪华大堂：舒适的接待大堂，健身房与共享工作空间，让生活更充实。
-            li 泳池
-            li 健身房
-            li 花园
-            li 共享工作空间
-            li 休闲图书室
-            li 九人座接驳车
-            li 室内装修：天地壁、卫浴、家具家电（床、沙发、电视柜、电视机、冰箱、空调等），精装修，拎包入住
-            li 信箱
-            li 停车场
-          p 体验精心设计的大自然绿化空间所带来的预约生活，以及享受能满足您完美生活方式的方便设施。
-        section
-          h2 项目周边特色
-          p
-            img(src="../../img/banner.jpg")
+      article {{{content}}}
 
       .qrcode
         h3 微信联系
-        img(src="../../img/qrcode.png")
+        img(src="/wp-content/themes/tonglu/img/qrcode.png")
         p 添加微信时请备注

@@ -16,13 +16,16 @@ block content
   .container.location
     h1 泰国楼盘
     ul.house-list
+      <!--{{#blog}}-->
       li.house-item
         .thumbnail
-          img(src="../../img/banner.jpg")
+          img(src="{{thumbnail}}")
         article
-          h1 2017年7月1日炎热七月
-          address Pridi Banomyong 14,Phra Khanong Sub-District. Watthana District.Bangkok.Thailand
-          p.details 户型： 1房1卫：25、28、41.5平米  1房1卫Plus：34、37.5、38平米
+          h1
+            a(href="{{link}}") {{full_title}}
+          address {{address}}
+          p.details {{main_door}}
           p.info 年均租金：
-            span.price 6%
-          .price 300万-430万泰铢
+            span.price {{rent}}
+          .price {{price}}
+      <!--{{/blog}}-->

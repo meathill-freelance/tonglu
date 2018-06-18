@@ -1,9 +1,9 @@
-.house
+.house,
+.single-house
   background-color #F8F8F8
 
   header&
     background-color #262626
-    color white
     padding 0 0 58px
 
   nav
@@ -19,6 +19,7 @@
         color white
 
   h1
+    color white
     font-size 30px
     margin 0 0 1em
 
@@ -26,30 +27,31 @@
     display flex
 
   .slide
-    width 800px
+    width 60%
 
-    img
-      max-width 100%
+    .carousel-item
+      height 0
+      padding-top 75%
+      background-size cover
+      background-position center
 
-    .main
-      height 600px
-
-    .img-list
+    .carousel-indicators
+      position static
       margin 15px 0 0
       padding 0
       list-style none
       display flex
 
       li
-        flex 1
-        height 111px
+        background-size cover
+        background-position center
+        flex 1 1 16%
+        margin: 0
+        height 0
+        padding-top 13.5%
 
         + li
           margin-left 15px
-
-      img
-        width 100%
-        height 100%
 
   .summary
     flex 1
@@ -59,12 +61,85 @@
 
     header
       background-color $active-color
-      padding 1em
+      border-radius 4px
+      color white
+      padding 1em 1.5em
+
+      > *:last-child
+        margin-bottom 0
+
+    .price
+      font-size 50px
+
+      small
+        font-size 20px
+
+    .convert-to-rmb
+      color #9BAEFF
+      font-size 18px
+
+    table
+      margin-bottom .5em
+
+      td
+        font-size 40px
+        font-weight bold
+        color #FF4343
+
+        small
+          font-size 14px
+          color #999
+
+    .tag
+      border 1px solid #7993FF
+      border-radius 30px
+      display inline-block
+      font-size 18px
+      line-height 38px
+      padding 0 .75em
+      margin-right .5em
+      margin-bottom .5em
 
     .body
       background-color white
-      flex 1
+      border-radius 4px 4px 0 0
       margin-top 15px
+      padding 1em 1.5em 0
+
+      h3, p
+        font-size 18px
+
+      p
+        font-weight 100
+
+      h3:first-of-type
+        border-top 1px solid #F2F2F2
+        padding-top 1rem
+
+      p:last-child
+        border-bottom 1px solid #F2F2F2
+        margin-bottom 0
+        padding-bottom 1rem
+
+    footer
+      background-color white
+      border-radius 0 0 4px 4px
+      display flex
+      flex 1
+      padding 1em 1.5em
+
+      .btn
+        display flex
+        justify-content center
+        align-items center
+
+      div
+        font-size 18px
+        margin-left 40px
+
+        .phone-num
+          font-size 20px
+          font-weight 100
 
   .details
     display flex
@@ -106,6 +181,7 @@
 
       img
         max-width 100%
+        height auto
 
     .qrcode
       background-color white
