@@ -1,0 +1,39 @@
+.form
+  <!--{{{nonce}}}-->
+  .form-group.row
+    label.col-sm-2.col-form-label.text-right(for="price") 价格范围
+    .col-sm-10
+      input#price.form-control(placeholder="价格范围，如“1640~4770”", name="price", value="{{price}}")
+  .form-group.row
+    label.col-sm-2.col-form-label.text-right(for="price-unit") 价格单位
+    .col-sm-10
+      input#price-unit.form-control(placeholder="价格单位，如“万泰铢”", name="unit", value="{{unit}}")
+  .form-group.row
+    label.col-sm-2.col-form-label.text-right(for="rmb") 约合人民币
+    .col-sm-10
+      input#rmb.form-control(placeholder="约合人民币，包括单位，如“￥300~900万”", name="rmb", value="{{rmb}}")
+  .form-group.row
+    label.col-sm-2.col-form-label.text-right(for="tags") 亮点
+    .col-sm-10
+      input#tags.form-control(placeholder="亮点，如“永久产权 可贷款 首付20% 全套硬装”", name="tags", value="{{tags}}")
+      small.form-text.text-muted 请使用空格分割
+  .form-group.row
+    label.col-sm-2.col-form-label.text-right(for="recommend") 推荐语
+    .col-sm-10
+      input#recommend.form-control(placeholder="推荐语，如“曼谷素坤逸主干道投资入门首选（包租3年、送家具家电、免全套过户费）”", name="recommend", value="{{recommend}}")
+  .form-group.row
+    label.col-sm-2.col-form-label.text-right(for="rent") 年均租金
+    .col-sm-10
+      input#rent.form-control(placeholder="年均租金，如“4%”", name="rent", value="{{rent}}")
+  .form-group.row
+    label.col-sm-2.col-form-label.text-right(for="growth") 近一年涨幅
+    .col-sm-10
+      input#growth.form-control(placeholder="近一年涨幅，如“6~8%”", name="growth", value="{{growth}}")
+  .form-group.row
+    label.col-sm-2.col-form-label.text-right(for="address") 项目地址
+    .col-sm-10
+      input#address.form-control(placeholder="项目地址", name="address", value="{{address}}")
+  .form-group.row
+    label.col-sm-2.col-form-label.text-right(for="main-door") 主力户型
+    .col-sm-10
+      input#main-door.form-control(placeholder="主力户型", name="main_door", value="{{main_door}}")

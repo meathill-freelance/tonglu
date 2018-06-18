@@ -3,7 +3,7 @@ import gulp from 'gulp';
 import pug from 'gulp-pug';
 import stylus from 'gulp-stylus';
 import rename from 'gulp-rename';
-import {readFile, readDir} from './helper/fs';
+import {copy, readFile, readDir} from './helper/fs';
 import html2tpl from './helper/html2tpl';
 
 /* global __dirname */
@@ -36,11 +36,11 @@ gulp.task('template', async () => {
   await html2tpl(header, path.resolve(__dirname, '../template/header.html'));
   await html2tpl(footer, path.resolve(__dirname, '../template/footer.html'));
   const files = await readDir(path.resolve(__dirname, 'html'), /\.html$/);
-  await files.map(async file => {
+  await Promise.all(files.map(async file => {
     const content = await readFile(path.resolve(__dirname, `html/${file}`), 'utf8');
-    let [header, body, footer] = content.split('<!--split-->');
-    await html2tpl(body, `../template/${file}`);
-  });
+    const parts = content.split('<!--split-->');
+    await html2tpl(parts.length > 1 ? parts[1] : content, `../template/${file}`);
+  }));
 });
 
 gulp.task('build', gulp.parallel(

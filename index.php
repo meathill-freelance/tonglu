@@ -8,8 +8,6 @@
  * Time: 上午12:25
  */
 
-require_once 'vendor/autoload.php';
-
 get_header();
 
 

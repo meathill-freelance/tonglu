@@ -8,7 +8,6 @@
  * Date: 2018/6/17
  * Time: 下午11:49
  */
-require_once 'vendor/autoload.php';
 
 get_header();
 

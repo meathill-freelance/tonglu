@@ -9,8 +9,6 @@
  * Time: 下午2:11
  */
 
-require_once 'vendor/autoload.php';
-
 get_header();
 
 // 生成列表
