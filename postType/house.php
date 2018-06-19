@@ -159,3 +159,10 @@ function house_meta_save_handler($post_id) {
   update_post_meta($post_id, '_house_main_door', $main_door);
 }
 add_action('save_post', 'house_meta_save_handler');
+
+function add_bootstrap_css() {
+  if ($_REQUEST['post_type'] == 'house') {
+    wp_enqueue_style('admin_css_bootstrap', '//cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css', false, '4.1.1');
+  }
+}
+add_action('admin_enqueue_scripts', 'add_bootstrap_css');

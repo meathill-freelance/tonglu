@@ -24,7 +24,6 @@ if (!function_exists('tonglu_setup')) {
     add_theme_support( 'automatic-feed-links' );
     add_theme_support( 'title-tag' );
     add_theme_support( 'post-thumbnails' );
-    set_post_thumbnail_size( 1440, 120, true );
     add_theme_support('category-thumbnails');
 
     register_nav_menus([
@@ -44,8 +43,6 @@ if (!function_exists('tonglu_setup')) {
       'width'       => 80,
       'flex-height' => true,
     ]);
-
-    wp_enqueue_style('admin_css_bootstrap', '//cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css', false, '4.1.1');
   }
 }
 add_action('after_setup_theme', 'tonglu_setup');
@@ -54,7 +51,7 @@ require 'postType/house.php';
 
 /**************************************
  *
- * add action
+ * helpers
  *
  * ***********************************/
 /**
