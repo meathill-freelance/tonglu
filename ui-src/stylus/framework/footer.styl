@@ -30,6 +30,29 @@
       &:last-child
         padding-bottom 2px
 
+    .links
+      display flex
+
+      h2
+        font-size 1rem
+        line-height 1.5
+        margin-bottom 0
+
+      ul
+        padding 0
+        margin 0 0 0 1em
+        list-style none
+        display flex
+
+        li + li
+          margin-left .75em
+
+        a
+          color white
+
+          &:hover
+            color var(--yellow)
+
   .phone
     font-size 40px
     font-weight normal

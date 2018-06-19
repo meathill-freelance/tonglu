@@ -10,6 +10,7 @@
 
 get_header();
 
-
+echo '<h1>Welcome to 通路有家</h1>';
 
 get_footer();
+

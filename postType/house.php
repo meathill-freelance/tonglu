@@ -38,6 +38,9 @@ function add_post_type_house() {
       'excerpt',
     ],
     'has_archive' => true,
+    'rewrite' => [
+      'slug' => 'house/%house%',
+    ]
   ];
   register_post_type('house', $args);
 
@@ -58,10 +61,39 @@ function add_post_type_house() {
   $args = [
     'labels' => $labels,
     'hierarchical' => true,
+    'rewrite' => [
+      'hierarchical' => true,
+    ],
   ];
   register_taxonomy('house_category', 'house', $args);
 }
 add_action('init', 'add_post_type_house');
+
+// 修改链接，以便插入 category
+function tonglu_house_post_link( $post_link, $id = 0 ){
+  $post = get_post($id);
+  if ( is_object( $post ) ){
+    if ($post->post_type != 'house') {
+      return $post_link;
+    }
+    $terms = wp_get_object_terms( $post->ID, 'house_category' );
+    if( $terms ){
+      return str_replace( '%house%' , $terms[0]->slug , $post_link );
+    }
+  }
+  return $post_link;
+}
+add_filter( 'post_type_link', 'tonglu_house_post_link', 10, 3 );
+
+// 增加重定向规则
+function tonglu_house_rewrite_rules($rules) {
+  $newRules = [
+    'house/([^/]+)/([^/]+)/?$' => 'index.php?house=$matches[2]',
+    'house/([^/]+)/?$' => 'index.php?house_category=$matches[1]',
+  ];
+  return array_merge($newRules, $rules);
+}
+add_filter('rewrite_rules_array', 'tonglu_house_rewrite_rules');
 
 // 添加 meta box
 function tonglu_house_meta_box($post) {

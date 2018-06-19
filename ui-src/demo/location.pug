@@ -2,19 +2,27 @@ extends partial/layout
 
 block content
   .container
-    ul.location-list
-      li.active(style="background-image: url(../../img/banner.jpg)")
-        h2 泰国
-        h3 Thailand
+    .location-list
+      <!--{{#categories}}-->
+      a(
+        href="/house/{{slug}}",
+        class="{{#is_active}}active{{/is_active}}",
+        style="background-image: url({{url}})",
+      )
+        h2 {{name}}
+        h3 {{slug}}
+      <!--{{/categories}}-->
+      <!--remove-start-->
       li(style="background-image:url(../../img/banner.jpg)")
         h2 澳洲
         h3 Australia
       li(style="background-image:url(../../img/banner.jpg)")
         h2 英国
         h3 England
+      <!--remove-end-->
 
   .container.location
-    h1 泰国楼盘
+    h1 {{category}}楼盘
     ul.house-list
       <!--{{#blog}}-->
       li.house-item

@@ -16,10 +16,20 @@ wp_footer();
 $wp_footer = ob_get_contents();
 ob_end_clean();
 
+$links = wp_list_bookmarks([
+  'limit' => 5,
+  'category_name' => '友情链接',
+  'echo' => false,
+  'title_li' => '',
+  'category_before' => '',
+  'category_after' => '',
+]);
+
 $home_url = esc_url(home_url('/', is_ssl() ? 'https' : 'http'));
 $result = [
   'wp_footer' => $wp_footer,
   'theme_url' => get_theme_root_uri() . '/' . get_template(),
+  'links' => $links,
 ];
 $template = dirname(__FILE__) . '/template/footer.html';
 $template = file_get_contents($template);
