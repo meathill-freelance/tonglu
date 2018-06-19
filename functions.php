@@ -138,3 +138,9 @@ function strip_array_keys($value) {
     return is_array($item) ? $item[0] : $item;
   }, $value));
 }
+
+/**
+ * 开启 links 菜单项
+ * 3.5 之后默认关闭
+ */
+add_filter( 'pre_option_link_manager_enabled', '__return_true' );

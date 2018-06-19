@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "stylus": "stylus ./stylus/screen.styl -o ../style.css -w",
-    "dev": "gulp watch"
+    "dev": "gulp watch",
+    "build": "gulp"
   },
   "repository": {
     "type": "git",
