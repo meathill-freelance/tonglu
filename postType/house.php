@@ -39,7 +39,7 @@ function add_post_type_house() {
     ],
     'has_archive' => true,
     'rewrite' => [
-      'slug' => 'house/%house%',
+      'slug' => 'house/%house_category%',
     ]
   ];
   register_post_type('house', $args);
@@ -78,7 +78,7 @@ function tonglu_house_post_link( $post_link, $id = 0 ){
     }
     $terms = wp_get_object_terms( $post->ID, 'house_category' );
     if( $terms ){
-      return str_replace( '%house%' , $terms[0]->slug , $post_link );
+      return str_replace( '%house_category%' , $terms[0]->slug , $post_link );
     }
   }
   return $post_link;
@@ -161,7 +161,8 @@ function house_meta_save_handler($post_id) {
 add_action('save_post', 'house_meta_save_handler');
 
 function add_bootstrap_css() {
-  if ($_REQUEST['post_type'] == 'house') {
+  $post_type = $_REQUEST['post_type'] ? $_REQUEST['post_type'] : get_post_type();
+  if ($post_type == 'house') {
     wp_enqueue_style('admin_css_bootstrap', '//cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css', false, '4.1.1');
   }
 }
