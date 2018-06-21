@@ -2,6 +2,9 @@ extends partial/layout
 
 block content
   .container
+    <!--{{^has_blog}}-->
+    h1.mt-5 楼盘展示
+    <!--{{/has_blog}}-->
     .location-list
       <!--{{#categories}}-->
       a(
@@ -21,6 +24,7 @@ block content
         h3 England
       <!--remove-end-->
 
+  <!--{{#has_blog}}-->
   .container.location
     h1 {{category}}楼盘
     ul.house-list
@@ -37,3 +41,4 @@ block content
             span.price {{rent}}
           .price {{price}}
       <!--{{/blog}}-->
+  <!--{{/has_blog}}-->

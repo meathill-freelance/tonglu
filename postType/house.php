@@ -90,6 +90,7 @@ function tonglu_house_rewrite_rules($rules) {
   $newRules = [
     'house/([^/]+)/([^/]+)/?$' => 'index.php?house=$matches[2]',
     'house/([^/]+)/?$' => 'index.php?house_category=$matches[1]',
+    'house/?$' => 'index.php?house_category=0',
   ];
   return array_merge($newRules, $rules);
 }

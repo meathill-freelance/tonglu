@@ -68,6 +68,7 @@ $result = array(
   'category' => single_cat_title('', false),
   'description' => category_description(),
   'blog' => $blog,
+  'has_blog' => true,
   'cur_page' => $cur_page,
   'pages' => $pages,
   'categories' => $categories,
