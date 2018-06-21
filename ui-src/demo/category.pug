@@ -9,8 +9,10 @@ block content
     ul.article-list
       <!--{{#blog}}-->
       li.article-item
+        <!--{{#thumbnail}}-->
         .thumbnail
           img(src="{{thumbnail}}")
+        <!--{{/thumbnail}}-->
         article.article
           h2
             a(href="{{link}}") {{full_title}}

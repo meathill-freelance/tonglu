@@ -31,7 +31,8 @@ block content
       <!--{{#blog}}-->
       li.house-item
         .thumbnail
-          img(src="{{thumbnail}}")
+          a(href="{{link}}")
+            img(src="{{thumbnail}}")
         article
           h1
             a(href="{{link}}") {{full_title}}

@@ -3,8 +3,8 @@
   background-color #F8F8F8
 
   header&
+    padding 0 0 1rem
     background-color #262626
-    padding 0 0 2.9rem
 
   nav
     color #C6C6C6
@@ -23,11 +23,7 @@
     font-size 1.5rem
     margin 0 0 1em
 
-  .showcase
-    display flex
-
   .slide
-    width 60%
 
     .carousel-item
       height 0
@@ -54,16 +50,13 @@
           margin-left .75rem
 
   .summary
-    flex 1
     display flex
     flex-direction column
-    margin-left .75rem
 
     header
       background-color $active-color
       border-radius .2rem
       color white
-      padding 1em 1.5em
 
       > *:last-child
         margin-bottom 0
@@ -104,7 +97,6 @@
       background-color white
       border-radius .25rem .25rem 0 0
       margin-top .75rem
-      padding 1em 1.5em 0
 
       h3, p
         font-size .9rem
@@ -126,7 +118,6 @@
       border-radius 0 0 .25rem .25rem
       display flex
       flex 1
-      padding 1em 1.5em
 
       .btn
         display flex
@@ -135,21 +126,17 @@
 
       div
         font-size .9rem
-        margin-left 2rem
 
         .phone-num
           font-size 1rem
           font-weight 100
 
   .details
-    display flex
-    padding-top 2.25rem
 
     article
       background-color white
       font-size .9rem
       line-height 2
-      padding 1.5rem 2rem
       flex 1
 
       section
@@ -185,9 +172,6 @@
 
     .qrcode
       background-color white
-      margin-left .5rem
-      width 16rem
-      height 16rem
 
       h3
         font-size 1rem
@@ -203,3 +187,71 @@
       p
         font-weight 100
         text-align center
+
+  @media (max-width $iphone5-width)
+    th:first-child
+      width 50%
+    
+    td
+      vertical-align top
+
+    small
+      display block
+
+  @media (max-width $xs-width)
+    .slide
+      margin-bottom 1em
+
+    .summary
+      header
+        padding .25em 1em 1em
+
+      .body,
+      footer
+        padding 1em
+
+      footer div
+        margin-left 1.5em
+
+    .details
+      padding-top 1em
+
+      article
+        padding 1em
+
+      .qrcode
+        margin-top 1em
+
+  @media (min-width $xs-width + 1px)
+    header&
+      padding 0 0 2.9rem
+
+    .showcase
+      display flex
+
+    .slide
+      width 60%
+
+    .summary
+      flex 1
+      margin-left .75rem
+
+      header,
+      .body,
+      footer
+        padding 1em 1.5em
+
+      footer div
+        margin-left 2rem
+
+    .details
+      display flex
+      padding-top 2.25rem
+
+      article
+        padding 1.5rem 2rem
+
+      .qrcode
+        margin-left .5rem
+        width 16rem
+        height 16rem

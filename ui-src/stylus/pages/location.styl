@@ -1,6 +1,5 @@
 .location-list
   margin 1.5rem 0 3.5rem
-  display flex
   list-style none
 
   a
@@ -32,9 +31,6 @@
       opacity 1
       transition opacity .5s
 
-    + a
-      margin-left .75rem
-
     h2,
     h3
       position relative
@@ -48,6 +44,16 @@
       &::before
         opacity 0
 
+  @media (max-width $xs-width)
+    a + a
+      margin-top .75rem
+
+  @media (min-width $xs-width + 1px)
+    display flex
+
+    a + a
+      margin-left .75rem
+
 .location
   > h1
     border-bottom 1px solid #979797
@@ -59,45 +65,52 @@
   padding 0
   list-style none
 
-  .house-item
-    display flex
-    font-size 1rem
-    font-weight 100
-    padding 1rem 0
-
-    .thumbnail
-      width 22.5rem
-      margin-right 1.75rem
-
-    article
-      flex 1
-      display flex
-      flex-direction column
-
-    h1
-      font-size 1.5rem
-
-      a
-        color $black
-
-        &:hover
-          color $active-color
-
-    address
-      color #999
-
-    .price
-      color $price-color
-      font-size 1.5em
-      font-weight bold
-      margin-top auto
-      text-align right
-
-    .info .price
-      font-size 1em
-
   img
     width 100%
     height 15rem
     object-fit cover
     object-position center
+
+.house-item
+  font-size 1rem
+  font-weight 100
+  padding 1rem 0
+
+  article
+    flex 1
+    display flex
+    flex-direction column
+
+  h1
+    font-size 1.5rem
+
+    a
+      color $black
+
+      &:hover
+        color $active-color
+
+  address
+    color #999
+
+  .price
+    color $price-color
+    font-size 1.5em
+    font-weight bold
+    margin-top auto
+    text-align right
+
+  .info .price
+    font-size 1em
+
+  @media (max-width $xs-width)
+    .thumbnail
+      margin-bottom .5em
+
+  @media (min-width $xs-width + 1px)
+    display flex
+
+    .thumbnail
+      width 22.5rem
+      margin-right 1.75rem
+

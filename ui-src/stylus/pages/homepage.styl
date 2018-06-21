@@ -4,13 +4,26 @@
   flex-direction column
   justify-content center
   align-items center
-  height calc(100vh - 6rem)
   background-position center
   background-size cover
 
-  h1
-    font-size 4rem
-    margin-bottom 1em
+  @media (max-width $xs-width)
+    height calc(100vh - 3.5rem)
+    padding 0 2.5rem
 
-  p
-    font-size 1.4rem
+    h1
+      font-size 2.5rem
+      margin-bottom 1.5em
+
+    p
+      font-size 1.2rem
+
+  @media (min-width $xs-width + 1px)
+    height calc(100vh - 6rem)
+
+    h1
+      font-size 4rem
+      margin-bottom 1em
+
+    p
+      font-size 1.4rem
