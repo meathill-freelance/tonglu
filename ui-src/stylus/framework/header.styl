@@ -133,49 +133,49 @@
           border-radius .2rem
           box-shadow 0 .3rem .6rem rgba(0, 48, 255, .5)
 
-      .dropdown
-        position static
+    .dropdown
+      position static
 
-      .dropdown-menu
-        background rgba(0,0,0,.8)
-        color white
-        display block
-        font-size 1rem
-        position absolute
-        top 6rem
-        left 0
-        width 100%
-        height 0
-        overflow hidden
-        transition height .5s
-        padding 0
-        margin 0
-        border none
-        border-radius 0
+    .dropdown-menu
+      background rgba(0,0,0,.8)
+      color white
+      display block
+      font-size 1rem
+      position absolute
+      top 6rem
+      left 0
+      width 100%
+      height 0
+      overflow hidden
+      transition height .5s
+      padding 0
+      margin 0
+      border none
+      border-radius 0
 
-        .container
-          display flex
-          justify-content flex-end
-          align-items center
-          height 100%
+      .container
+        display flex
+        justify-content flex-end
+        align-items center
+        height 100%
 
-        &.show
-          height 4rem
+      &.show
+        height 4rem
 
-      .dropdown-item
-        color gray
-        width auto
-        border 1px solid transparent
+    .dropdown-item
+      color gray
+      width auto
+      border 1px solid transparent
 
-        &.active,
-        &:hover
-          color $active-color
-          border 1px solid currentColor
-          border-radius 1em
-          background-color transparent
+      &.active,
+      &:hover
+        color $active-color
+        border 1px solid currentColor
+        border-radius 1em
+        background-color transparent
 
-        + .dropdown-item
-          margin-left 3.5rem
+      + .dropdown-item
+        margin-left 3.5rem
 
 #lang
   margin-left 2rem
