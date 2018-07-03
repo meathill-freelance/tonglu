@@ -76,11 +76,3 @@ block content
         h3 微信联系
         img(src="/wp-content/themes/tonglu/img/qrcode.png")
         p 添加微信时请备注
-
-script.
-  $('#main-slide').on('slid.bs.carousel', function (event) {
-    var element = $('#main-slide .carousel-inner li').eq(event.relatedTarget)[0];
-    if (element) {
-      element.scrollIntoView();
-    }
-  });
