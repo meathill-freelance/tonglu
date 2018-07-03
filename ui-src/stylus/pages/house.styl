@@ -41,10 +41,10 @@
       li
         background-size cover
         background-position center
-        flex 1 1 16%
-        margin: 0
-        height 0
-        padding-top 13.5%
+        flex 0 0 120px
+        width 120px
+        height 90px
+        margin 0
 
         + li
           margin-left .75rem
@@ -87,7 +87,7 @@
       border 1px solid #7993FF
       border-radius 1.5rem
       display inline-block
-      font-size .9rem
+      font-size .8rem
       line-height 2
       padding 0 .75em
       margin-right .5em
@@ -96,6 +96,8 @@
     .body
       background-color white
       border-radius .25rem .25rem 0 0
+      display flex
+      flex-direction column
       margin-top .75rem
 
       h3, p
@@ -110,6 +112,7 @@
 
       p:last-child
         border-bottom 1px solid #F2F2F2
+        flex 1
         margin-bottom 0
         padding-bottom 1rem
 
@@ -117,7 +120,6 @@
       background-color white
       border-radius 0 0 .25rem .25rem
       display flex
-      flex 1
 
       .btn
         display flex
@@ -236,10 +238,15 @@
       flex 1
       margin-left .75rem
 
-      header,
-      .body,
+      header
+        padding .5em 1.25em 1em
+
+      .body
+        flex 1
+        padding 1.25em 1.25em 0
+
       footer
-        padding 1em 1.5em
+        padding 1.25em
 
       footer div
         margin-left 2rem
