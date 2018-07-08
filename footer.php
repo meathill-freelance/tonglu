@@ -16,13 +16,10 @@ wp_footer();
 $wp_footer = ob_get_contents();
 ob_end_clean();
 
-$links = wp_list_bookmarks([
-  'limit' => 5,
-  'category_name' => '友情链接',
+$locations = get_nav_menu_locations();
+$object = wp_get_nav_menu_object($locations['footer']);
+$links = wp_get_nav_menu_items($object->name, [
   'echo' => false,
-  'title_li' => '',
-  'category_before' => '',
-  'category_after' => '',
 ]);
 
 $home_url = esc_url(home_url('/', is_ssl() ? 'https' : 'http'));

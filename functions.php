@@ -28,6 +28,7 @@ if (!function_exists('tonglu_setup')) {
 
     register_nav_menus([
       'primary' => '主导航',
+      'footer' => '底部导航',
     ]);
 
     add_theme_support('html5', [

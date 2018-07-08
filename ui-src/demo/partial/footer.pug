@@ -4,11 +4,15 @@ footer#footer
       img(src="/wp-content/themes/tonglu/img/qrcode.png")
 
     .info
-      p.phone 400-123-1233
-      p.hint 全国统一服务热线(工作日6:00-24:00)
-      p 地址：北京市朝阳区通惠河北路朗园3号楼ideapod一层
-      p Email：www.baidu.com
-      .links {{{links}}}
+      p.phone 400-770-2178
+      p 地址：北京市朝阳区郎园 Vintage 三号楼
+      p Email：service@tongluyoujia.com
+      .links
+        ul
+          <!--{{#links}}-->
+          li
+            a(href="{{url}}") {{title}}
+          <!--{{/links}}-->
 
     .logo
       img(src="/wp-content/themes/tonglu/img/logo-white.png")
