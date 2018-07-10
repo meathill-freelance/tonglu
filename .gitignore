@@ -7,3 +7,6 @@ ui-src/html
 ui-src/template
 /vendor/
 /template
+
+# content
+backup.sql
