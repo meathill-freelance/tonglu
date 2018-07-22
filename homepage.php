@@ -23,6 +23,10 @@ while (have_posts()) {
   the_post();
 
   $title = get_the_title();
+
+  // 手機端的空格替換成換行
+  $title = preg_replace('/\s+/', '<span class="d-none d-sm-inline">$0</span><br class="d-sm-none">', $title);
+  
   $content = get_the_content();
   $content = apply_filters( 'the_content', $content );
   $content = str_replace( ']]>', ']]&gt;', $content );
