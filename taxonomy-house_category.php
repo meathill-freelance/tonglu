@@ -16,15 +16,21 @@ $categories = get_terms([
   'taxonomy' => 'house_category',
   'hide_empty' => false,
 ]);
-$categories = array_map(function ($category) use ($current_category) {
+$active_index = null;
+$categories = array_map(function ($category, $index) use ($current_category, &$active_index) {
   $thumbnail = json_decode($category->term_thumbnail, true);
+  $active_index = $current_category == $category->slug && $active_index === null ? $index : $active_index;
   return [
     'name' => $category->name,
     'slug' => $category->slug,
     'url' => $thumbnail['url'],
     'is_active' => $current_category == $category->slug,
   ];
-}, $categories);
+}, $categories, array_keys($categories));
+
+// 把當前國家放到第一位
+$first = array_splice($categories, $active_index, 1);
+$categories = array_merge($first, $categories);
 
 // 生成列表
 if (have_posts()) {
@@ -78,5 +84,8 @@ $tpl = new Mustache_Engine();
 $template = dirname(__FILE__) . '/template/location.html';
 $template = file_get_contents($template);
 echo $tpl->render($template, $result);
+
+// 插入 swiper 初始化
+wp_enqueue_script('script-name', get_template_directory_uri() . '/ui-src/js/location.js', [], '1.0.0');
 
 get_footer();

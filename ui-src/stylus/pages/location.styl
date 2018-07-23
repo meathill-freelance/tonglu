@@ -1,9 +1,8 @@
 .location-list
-  margin 1.5rem 0 3.5rem
-  list-style none
+  margin 1.5rem 0
+  padding-bottom 2rem
 
   a
-    flex 1
     background-color #444
     background-size cover
     background-position center
@@ -44,15 +43,18 @@
       &::before
         opacity 0
 
-  @media (max-width $xs-width)
-    a + a
-      margin-top .75rem
+  .swiper-pagination-bullets
+    bottom 0
 
-  @media (min-width $xs-width + 1px)
-    display flex
+  @media (max-width $xs-width - 1px)
+    .swiper-button-next,
+    .swiper-button-prev
+      display none
 
-    a + a
-      margin-left .75rem
+  @media (min-width $xs-width)
+    .swiper-button-next,
+    .swiper-button-prev
+      margin-top calc(-1rem - 22px)
 
 .location
   > h1

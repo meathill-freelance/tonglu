@@ -5,16 +5,20 @@ block content
     <!--{{^has_blog}}-->
     h1.mt-5 楼盘展示
     <!--{{/has_blog}}-->
-    .location-list
-      <!--{{#categories}}-->
-      a(
-        href="/house/{{slug}}",
-        class="{{#is_active}}active{{/is_active}}",
-        style="background-image: url({{url}})",
-      )
-        h2 {{name}}
-        h3 {{slug}}
-      <!--{{/categories}}-->
+    .location-list.swiper-container
+      .swiper-wrapper
+        <!--{{#categories}}-->
+        a.swiper-slide(
+          href="/house/{{slug}}",
+          class="{{#is_active}}active{{/is_active}}",
+          style="background-image: url({{url}})",
+        )
+          h2 {{name}}
+          h3 {{slug}}
+        <!--{{/categories}}-->
+      .swiper-pagination
+      .swiper-button-next
+      .swiper-button-prev
       <!--remove-start-->
       li(style="background-image:url(../../img/banner.jpg)")
         h2 澳洲
