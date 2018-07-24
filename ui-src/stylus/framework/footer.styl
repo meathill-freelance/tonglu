@@ -59,6 +59,7 @@
         margin 0 auto
 
     .info
+      margin 0 auto
 
       .phone
         line-height 1.1
@@ -66,16 +67,14 @@
       .hint
         margin-bottom .5em
 
-      .links
-        h2
-          word-break keep-all
+    .links
+      ul
+        display block
+        width 100%
 
-        ul
-          display block
-
-        li
-          display inline-block
-          margin-right .75rem
+      li
+        display inline-block
+        margin-right .75rem
 
     .logo
       margin-top 2em
@@ -101,5 +100,8 @@
         &:last-child
           padding-bottom .1rem
 
-      .links li + li
-          margin-left .75em
+    .links
+      margin-bottom 1em
+
+      li + li
+        margin-left .75em
