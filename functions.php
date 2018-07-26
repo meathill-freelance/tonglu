@@ -141,6 +141,35 @@ function strip_array_keys($value) {
 }
 
 /**
+ * 生成翻页所需的数据
+ * @param int $max 页数
+ * @param string $base_url 基础链接
+ * @return array 页码，上一页下一页
+ */
+function generate_pagination($max, $base_url) {
+  $pages = [];
+  $count = 1;
+  $query_str = $_SERVER['QUERY_STRING'] ? '?'.$_SERVER['QUERY_STRING'] : NULL;
+  $current = get_query_var('paged');
+  $current = $current ? $current : 1;
+  while ($count <= $max) {
+    $pages[] = [
+      'num' => $count,
+      'class' => $current == $count ? 'active' : NULL,
+      'href' => $base_url . $count . $query_str,
+    ];
+    $count++;
+  }
+
+  return [
+    'cur_page' => $current,
+    'prev_page' => $current > 1 ? $base_url . ($current - 1) . $query_str : false,
+    'next_page' => $current < $max ? $base_url . ($current + 1) . $query_str : false,
+    'pages' => $pages,
+  ];
+}
+
+/**
  * 开启 links 菜单项
  * 3.5 之后默认关闭
  */

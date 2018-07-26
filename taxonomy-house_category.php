@@ -54,31 +54,17 @@ if (have_posts()) {
 
 // 生成翻页
 $max_page = $wp_query->max_num_pages;
-$cur_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
-$next_page = $cur_page + 1;
+$base_url = '/house_category/' . $current_category . '/page/';
+$pagination = generate_pagination($max_page, $base_url);
 
-$pages = array();
-$count = 1;
-$query_str = $_SERVER['QUERY_STRING'] ? '?'.$_SERVER['QUERY_STRING'] : NULL;
-while ($count <= $max_page) {
-  //TODO news不应该写死
-  $pages[] = array(
-    'num' => $count,
-    'class' => $cur_page == $count ? 'active' : NULL,
-    'href' => '/news/page/'.$count.$query_str,
-  );
-  $count++;
-}
 // 整理输出
-$result = array(
+$result = array_merge([
   'category' => single_cat_title('', false),
   'description' => category_description(),
   'blog' => $blog,
   'has_blog' => true,
-  'cur_page' => $cur_page,
-  'pages' => $pages,
   'categories' => $categories,
-);
+], $pagination);
 
 $tpl = new Mustache_Engine();
 $template = dirname(__FILE__) . '/template/location.html';

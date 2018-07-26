@@ -1,0 +1,26 @@
+nav(aria-label="Page navigation")
+  ul.pagination
+    <!--{{#prev_page}}-->
+    li.page-item
+      a.page-link(href="{{prev_page}}")
+        i.fas.fa-chevron-left
+    <!--{{/prev_page}}-->
+    <!--{{^prev_page}}-->
+    li.page-item.disabled
+      span.page-link
+        i.fas.fa-chevron-left
+    <!--{{/prev_page}}-->
+    <!--{{#pages}}-->
+    li.page-item(class="{{class}}")
+      a.page-link(href="{{href}}") {{num}}
+    <!--{{/pages}}-->
+    <!--{{#next_page}}-->
+    li.page-item
+      a.page-link(href="{{next_page}}")
+        i.fas.fa-chevron-right
+    <!--{{/next_page}}-->
+    <!--{{^next_page}}-->
+    li.page-item.disabled
+      span.page-link
+        i.fas.fa-chevron-right
+    <!--{{/next_page}}-->
