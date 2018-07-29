@@ -174,3 +174,13 @@ function generate_pagination($max, $base_url) {
  * 3.5 之后默认关闭
  */
 add_filter( 'pre_option_link_manager_enabled', '__return_true' );
+
+/**
+ * 移除 wordpress 自带的 jquery 1.x 版本
+ */
+function remove_default_jquery() {
+  wp_deregister_script('jquery');
+}
+if (!is_admin()) {
+  add_action('wp_enqueue_scripts', 'remove_default_jquery', 11);
+}
