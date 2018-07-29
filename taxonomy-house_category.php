@@ -16,21 +16,34 @@ $categories = get_terms([
   'taxonomy' => 'house_category',
   'hide_empty' => false,
 ]);
-$active_index = null;
-$categories = array_map(function ($category, $index) use ($current_category, &$active_index) {
+$categories = array_map(function ($category) use ($current_category) {
   $thumbnail = json_decode($category->term_thumbnail, true);
-  $active_index = $current_category == $category->slug && $active_index === null ? $index : $active_index;
   return [
     'name' => $category->name,
     'slug' => $category->slug,
     'url' => $thumbnail['url'],
     'is_active' => $current_category == $category->slug,
   ];
-}, $categories, array_keys($categories));
+}, $categories);
 
-// 把當前國家放到第一位
-$first = array_splice($categories, $active_index, 1);
-$categories = array_merge($first, $categories);
+
+// 把當前國家放到第一位，剩下的是泰英美
+$order = ['thailand', 'england', 'america'];
+usort($categories, function ($a, $b) use ($order) {
+  // 当前选中的优先级最高
+  if ($a['is_active']) {
+    return -1;
+  }
+  if ($b['is_active']) {
+    return 1;
+  }
+
+  $index_a = array_search($a['slug'], $order);
+  $index_b = array_search($b['slug'], $order);
+  $index_a = $index_a === false ? 100 : $index_a;
+  $index_b = $index_b === false ? 100 : $index_b;
+  return $index_a - $index_b;
+});
 
 // 生成列表
 if (have_posts()) {
