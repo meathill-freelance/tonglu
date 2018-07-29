@@ -23,33 +23,23 @@
     font-size 1.5rem
     margin 0 0 1em
 
-  .slide
+  .top-swiper .swiper-slide
+    height 0
+    padding-top 75%
+    background-size cover
+    background-position center
 
-    .carousel-item
-      height 0
-      padding-top 75%
+  .thumb-swiper
+    margin .75rem 0 0
+
+    .swiper-slide
       background-size cover
       background-position center
+      width 120px
+      height 90px
 
-    .carousel-indicators
-      position static
-      margin .75rem 0 0
-      padding 0
-      list-style none
-      display flex
-      overflow-x auto
-      justify-content flex-start
-
-      li
-        background-size cover
-        background-position center
-        flex 0 0 120px
-        width 120px
-        height 90px
-        margin 0
-
-        + li
-          margin-left .75rem
+      + .swiper-slide
+        margin-left .75rem
 
   .summary
     display flex
@@ -203,8 +193,11 @@
       display block
 
   @media (max-width $xs-width)
-    .slide
+    .top-swiper
       margin-bottom 1em
+
+    .thumb-swiper
+      display none
 
     .summary
       header
@@ -233,8 +226,14 @@
     .showcase
       display flex
 
-    .slide
+    #main-slide
       width 60%
+
+    .top-swiper
+      .swiper-button-next,
+      .swiper-button-prev,
+      .swiper-pagination
+        display none
 
     .summary
       flex 1

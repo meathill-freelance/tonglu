@@ -17,21 +17,22 @@ block content
       h1 {{{full_title}}}
 
     .container.showcase
-      #main-slide.carousel.slide(data-ride="carousel")
-        .carousel-inner
-          <!--{{#slides}}-->
-          .carousel-item(class="{{#is_first}}active{{/is_first}}", style="background-image:url({{url}})")
-          <!--{{/slides}}-->
-        a.carousel-control-prev(href="#main-slide", role="button", data-slide="prev")
-          span.fa.fa-chevron-left(aria-hidden="true")
-          span.sr-only Previous
-        a.carousel-control-next(href="#main-slide", role="button", data-slide="next")
-          span.fa.fa-chevron-right(aria-hidden="true")
-          span.sr-only Next
-        ol.carousel-indicators
-          <!--{{#slides}}-->
-          li(class="{{#is_first}}active{{/is_first}}", data-target="#main-slide" data-slide-to="{{key}}", style="background-image:url({{url}})")
-          <!--{{/slides}}-->
+      #main-slide
+        .swiper-container.top-swiper
+          .swiper-wrapper
+            <!--{{#slides}}-->
+            .swiper-slide(style="background-image:url({{url}})")
+            <!--{{/slides}}-->
+          .swiper-button-next.swiper-button-white.top-swiper-next
+          .swiper-button-prev.swiper-button-white.top-swiper-prev
+          .swiper-pagination.top-swiper-pagination
+        .swiper-container.thumb-swiper
+          .swiper-wrapper
+            <!--{{#slides}}-->
+            .swiper-slide(style="background-image:url({{url}})")
+            <!--{{/slides}}-->
+          .swiper-button-next.swiper-button-white.thumb-swiper-next
+          .swiper-button-prev.swiper-button-white.thumb-swiper-prev
       .summary
         header
           .price {{price}}

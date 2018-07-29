@@ -54,4 +54,7 @@ $template = dirname(__FILE__) . '/template/house.html';
 $template = file_get_contents($template);
 echo $tpl->render($template, $blog);
 
+// 插入 swiper 初始化
+wp_enqueue_script('script-name', get_template_directory_uri() . '/ui-src/js/house.js', [], '1.0.0');
+
 get_footer();
