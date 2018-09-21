@@ -28,7 +28,7 @@ $categories = array_map(function ($category) use ($current_category) {
 
 
 // 把當前國家放到第一位，剩下的是泰英美
-$order = ['thailand', 'england', 'america'];
+$order = ['england', 'america', 'thailand', ];
 usort($categories, function ($a, $b) use ($order) {
   // 当前选中的优先级最高
   if ($a['is_active']) {
