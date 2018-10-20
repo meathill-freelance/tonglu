@@ -10,9 +10,7 @@ import html2tpl from './helper/html2tpl';
 
 gulp.task('pug', () => {
   return gulp.src('demo/*.pug')
-    .pipe(pug({
-
-    }))
+    .pipe(pug())
     .pipe(gulp.dest('html/'));
 });
 

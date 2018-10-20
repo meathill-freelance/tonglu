@@ -24,6 +24,10 @@ if (is_single()) {
   $tags = substr($tags, 0, -1);
 }
 
+// 适配微信小程序 webview
+$pid = (int)$_GET['wx'];
+$blog_class = get_body_class($pid ? 'wx-app-webview' : null);
+
 $home_url = esc_url(home_url('/', is_ssl() ? 'https' : 'http'));
 $result = array(
   'title' => wp_title('|', FALSE, 'right') . get_bloginfo('name') . $page_num,
@@ -35,7 +39,7 @@ $result = array(
   'name' => get_bloginfo('name'),
   'name_title' => esc_attr(get_bloginfo('name', 'display')),
   'nav' => tonglu_bootstrap_nav(),
-  'body_class' => join( ' ', get_body_class( ) ),
+  'body_class' => join( ' ',  $blog_class),
 );
 
 // 为了保证wp_head的输出

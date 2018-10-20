@@ -10,7 +10,7 @@ block content
           a(href="/house") 楼盘展示
         <!--{{#category}}-->
         li.breadcrumb-item {{{category}}}
-        <!--{{/category}}
+        <!--{{/category}}-->
         li.breadcrumb-item.active(aria-current="page") {{{full_title}}}
 
     .container
@@ -77,3 +77,6 @@ block content
         h3 微信联系
         img(src="/wp-content/themes/tonglu/img/qrcode.png")
         p 添加微信时请备注
+
+  .wx-app-bar
+    button.reg-button(type="button", onclick="wx.miniProgram.navigateTo({url: '/pages/house/register?id={{id}}'})") 我很感兴趣

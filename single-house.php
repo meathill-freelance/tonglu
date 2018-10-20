@@ -33,7 +33,6 @@ if (have_posts()) {
     $blog = array_merge($fields, array(
       'id' => get_the_ID(),
       'is_featured' => is_sticky() && is_home() && ! is_paged(),
-      'blog_class' => join(' ', get_post_class($class, $post_id)),
       'full_title' => the_title_attribute(array('echo' => FALSE)),
       'is_search' => is_search(),
       'link' => apply_filters('the_permalink', get_permalink()),
@@ -55,6 +54,7 @@ $template = file_get_contents($template);
 echo $tpl->render($template, $blog);
 
 // 插入 swiper 初始化
-wp_enqueue_script('script-name', get_template_directory_uri() . '/ui-src/js/house.js', [], '1.0.0');
+wp_enqueue_script('house', get_template_directory_uri() . '/ui-src/js/house.js', [], '1.0.0');
+wp_enqueue_script('wx-js-sdk', '//res.wx.qq.com/open/js/jweixin-1.3.2.js', [], '1.3.2');
 
 get_footer();
