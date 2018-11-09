@@ -176,6 +176,21 @@ function generate_pagination($max, $base_url) {
 add_filter( 'pre_option_link_manager_enabled', '__return_true' );
 
 /**
+ * 如果在小程序内打开，带上 `wx=1` 的参数
+ *
+ * @param $input
+ *
+ * @return null|string|string[]
+ */
+function check_whether_in_wxapp($input) {
+	if ((int)$_GET['wx']) {
+		return add_query_arg('wx', 1, $input);
+	}
+	return $input;
+}
+add_filter( 'the_permalink', 'check_whether_in_wxapp' );
+
+/**
  * 移除 wordpress 自带的 jquery 1.x 版本
  */
 function remove_default_jquery() {
