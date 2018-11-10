@@ -37,3 +37,15 @@ if (window.innerWidth > 575) {
   galleryThumbs.controller.control = galleryTop;
 }
 
+if ('wx' in window) {
+  const classList = document.body.classList;
+  for (const klass of classList) {
+    const result = /^postid-(\d+)$/.exec(klass);
+    if (result) {
+      const postId = result[1];
+      console.log('Post ID: ', postId);
+      wx.miniProgram.postMessage({id: postId});
+      break;
+    }
+  }
+}

@@ -54,7 +54,7 @@ $template = file_get_contents($template);
 echo $tpl->render($template, $blog);
 
 // 插入 swiper 初始化
-wp_enqueue_script('house', get_template_directory_uri() . '/ui-src/js/house.js', [], '1.0.0');
 wp_enqueue_script('wx-js-sdk', '//res.wx.qq.com/open/js/jweixin-1.3.2.js', [], '1.3.2');
+wp_enqueue_script('house', get_template_directory_uri() . '/ui-src/js/house.js', [], '1.0.0');
 
 get_footer();
