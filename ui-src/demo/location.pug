@@ -5,6 +5,7 @@ block content
     <!--{{^has_blog}}-->
     h1.mt-5 楼盘展示
     <!--{{/has_blog}}-->
+    <!--{{#has_categories}}-->
     .location-list.swiper-container
       .swiper-wrapper
         <!--{{#categories}}-->
@@ -19,6 +20,7 @@ block content
       .swiper-pagination
       .swiper-button-next
       .swiper-button-prev
+    <!--{{/has_categories}}-->
       <!--remove-start-->
       li(style="background-image:url(../../img/banner.jpg)")
         h2 澳洲

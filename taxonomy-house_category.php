@@ -12,38 +12,41 @@
 get_header();
 
 $current_category = get_query_var('house_category');
-$categories = get_terms([
-  'taxonomy' => 'house_category',
-  'hide_empty' => false,
-]);
-$categories = array_map(function ($category) use ($current_category) {
-  $thumbnail = json_decode($category->term_thumbnail, true);
-  return [
-    'name' => $category->name,
-    'slug' => $category->slug,
-    'url' => $thumbnail['url'],
-    'is_active' => $current_category == $category->slug,
-  ];
-}, $categories);
+$categories = null;
+if ($current_category != 'onsale') {
+	$categories = get_terms([
+		'taxonomy' => 'house_category',
+		'hide_empty' => false,
+		'exclude' => 21,
+	]);
+	$categories = array_map(function ($category) use ($current_category) {
+		$thumbnail = json_decode($category->term_thumbnail, true);
+		return [
+			'name' => $category->name,
+			'slug' => $category->slug,
+			'url' => $thumbnail['url'],
+			'is_active' => $current_category == $category->slug,
+		];
+	}, $categories);
 
+  // 把當前國家放到第一位，剩下的是泰英美
+  $order = ['england', 'america', 'thailand', ];
+  usort($categories, function ($a, $b) use ($order) {
+    // 当前选中的优先级最高
+    if ($a['is_active']) {
+      return -1;
+    }
+    if ($b['is_active']) {
+      return 1;
+    }
 
-// 把當前國家放到第一位，剩下的是泰英美
-$order = ['england', 'america', 'thailand', ];
-usort($categories, function ($a, $b) use ($order) {
-  // 当前选中的优先级最高
-  if ($a['is_active']) {
-    return -1;
-  }
-  if ($b['is_active']) {
-    return 1;
-  }
-
-  $index_a = array_search($a['slug'], $order);
-  $index_b = array_search($b['slug'], $order);
-  $index_a = $index_a === false ? 100 : $index_a;
-  $index_b = $index_b === false ? 100 : $index_b;
-  return $index_a - $index_b;
-});
+    $index_a = array_search($a['slug'], $order);
+    $index_b = array_search($b['slug'], $order);
+    $index_a = $index_a === false ? 100 : $index_a;
+    $index_b = $index_b === false ? 100 : $index_b;
+    return $index_a - $index_b;
+  });
+}
 
 // 生成列表
 if (have_posts()) {

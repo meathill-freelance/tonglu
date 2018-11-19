@@ -44,7 +44,7 @@ if ('wx' in window) {
     if (result) {
       const postId = result[1];
       console.log('Post ID: ', postId);
-      wx.miniProgram.postMessage({id: postId});
+      wx.miniProgram.postMessage({data: {id: postId}});
       break;
     }
   }
