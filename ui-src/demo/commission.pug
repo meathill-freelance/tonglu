@@ -1,7 +1,8 @@
 extends partial/layout
 
 block content
-  .banner.about-us {{h1}}
+  .banner.about-us
+    h1#page-header {{title}}
 
   .container
     article {{{content}}}
@@ -203,6 +204,8 @@ block content
         commission.set(key, item.value);
       }
       commission.set('houseModel', houseModel);
+      const title = document.getElementById('page-header')
+      commission.set('type', title.innerText);
 
       const button = this.getElementsByTagName('button')[0];
       button.disabled = true;
