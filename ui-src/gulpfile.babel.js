@@ -3,7 +3,7 @@ import gulp from 'gulp';
 import pug from 'gulp-pug';
 import stylus from 'gulp-stylus';
 import rename from 'gulp-rename';
-import {copy, readFile, readDir} from './helper/fs';
+import {readFile, readDir} from './helper/fs';
 import html2tpl from './helper/html2tpl';
 
 /* global __dirname */

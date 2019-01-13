@@ -1,0 +1,228 @@
+extends partial/layout
+
+block content
+  .banner.about-us {{h1}}
+
+  .container
+    article {{{content}}}
+
+  form#commission-form.container
+    fieldset
+      legend 个人信息
+
+      .form-group.row
+        label.col-form-label.col-sm-2.text-right(for="name") 姓名
+        .col-sm-10
+          input#name.form-control(
+            required,
+            name="name",
+            placeholder="姓名",
+          )
+
+      .form-group.row
+        label.col-form-label.col-sm-2.text-right(for="phone") 手机号
+        .col-sm-10
+          input#phone.form-control(
+            required,
+            name="phone",
+            pattern="^1[345789]\\d{9}$",
+            placeholder="手机号",
+          )
+
+    fieldset
+      legend 房屋信息
+
+      .form-group.row
+        label.col-form-label.col-sm-2.text-right(for="city") 所在地
+        .col-sm-10
+          select#city.form-control(
+            required,
+            name="city",
+          )
+            option(value='', disabled) 请选择
+            each city in ['马来西亚', '英国', '美国', '泰国', '澳洲', '加拿大', '阿联酋', '日本']
+              option= city
+
+      .form-group.row
+        label.col-form-label.col-sm-2.text-right(for="address") 详细地址
+        .col-sm-10
+          textarea#address.form-control(
+            required,
+            name="address",
+            rows="2",
+            placeholder="详细地址",
+          )
+
+      .form-group.row
+        label.col-form-label.col-sm-2.text-right(for="property") 物业类型
+        .col-sm-10
+          select#property.form-control(
+            required,
+            name="property",
+          )
+            option(value='', disabled) 请选择
+            each property in ['独栋别墅', '公寓', '连排别墅', '商业地产']
+              option= property
+
+      .form-group.row
+        label.col-form-label.col-sm-2.text-right 户型结构
+        .col-sm-10
+          .row
+            .col-sm-4.mb-3
+              .input-group
+                input.form-control(
+                  type="number",
+                  name="house-room",
+                  value="1",
+                  min="0",
+                )
+                .input-group-append
+                  span.input-group-text 室
+            .col-sm-4.mb-3
+              .input-group
+                input.form-control(
+                  type="number",
+                  name="house-hall",
+                  value="1",
+                  min="0",
+                )
+                .input-group-append
+                  span.input-group-text 厅
+            .col-sm-4.mb-3
+              .input-group
+                input.form-control(
+                  type="number",
+                  name="house-toilet",
+                  value="1",
+                  min="0",
+                )
+                .input-group-append
+                  span.input-group-text 卫
+            .col-sm-4
+              .input-group
+                input.form-control(
+                  type="number",
+                  name="house-kitchen",
+                  value="1",
+                  min="0",
+                )
+                .input-group-append
+                  span.input-group-text 厨
+            .col-sm-4
+              .input-group
+                input.form-control(
+                  type="number",
+                  name="house-balcony",
+                  value="0",
+                  min="0",
+                )
+                .input-group-append
+                  span.input-group-text 阳台
+            .col-sm-4
+              .input-group
+                input.form-control(
+                  type="number",
+                  name="house-park",
+                  value="0",
+                  min="0",
+                )
+                .input-group-append
+                  span.input-group-text 车位
+
+      .form-group.row
+        label.col-form-label.col-sm-2.text-right(for="area") 房屋面积
+        .col-sm-5
+          input#area.form-control(
+            required,
+            name="area",
+            type="number",
+            step="1",
+            min="1"
+            placeholder="房屋面积",
+          )
+        .col-sm-3
+          select.form-control(
+            name="areaUnit",
+          )
+            option(selected) 平方英尺
+            option 平方米
+
+      .form-group.row
+        label.col-form-label.col-sm-2.text-right(for="price") 期望租金
+        .col-sm-5
+          input#price.form-control(
+            required,
+            name="price",
+            type="number",
+            step="1",
+            min="1",
+            placeholder="期望租金",
+          )
+        .col-sm-3
+          select.form-control(
+            name="priceUnit",
+          )
+            option(selected) 美元/月
+
+    .form-action.row.pb-5
+      .offset-sm-2.col-sm-10
+        button.btn.btn-lg.btn-primary 提交信息
+
+  script(src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js")
+  script.
+    function toCamelCase(value) {
+      return value.replace(/\-[a-z]/g, function (match) {
+        return match.toUpperCase();
+      });
+    }
+
+    AV.init({
+      appId: 'Qo10k2yl2z6vDAWuAIwG6jki-gzGzoHsz',
+      appKey: '2rwMhR9UkJNrh2s2bAdflf8L',
+    });
+    const form = document.getElementById('commission-form');
+    const Commission = AV.Object.extend('commission');
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      if (this.matches(':invalid')) {
+        return;
+      }
+      const elements = this.elements;
+      const commission = new Commission();
+      let houseModel = 'room室 hall厅 toilet卫 kitchen厨 balcony阳台 park车位';
+      for (const item of elements) {
+        if (/fieldset|button/i.test(item.tagName)) {
+          continue;
+        }
+        if (/^house\-/.test(item.name)) {
+          const key = item.name.substring(6);
+          houseModel = houseModel.replace(key, item.value);
+          continue;
+        }
+        const key = toCamelCase(item.name);
+        commission.set(key, item.value);
+      }
+      commission.set('houseModel', houseModel);
+
+      const button = this.getElementsByTagName('button')[0];
+      button.disabled = true;
+      button.innerText = '提交中...';
+
+      const acl = new AV.ACL();
+      const role = new AV.Role('administrator');
+      acl.setRoleReadAccess(role, true);
+      acl.setRoleWriteAccess(role, true);
+      commission.setACL(acl);
+      commission.save()
+        .then(function () {
+          alert('保存成功，请耐心等候客服联系。谢谢关注。');
+        })
+        .catch(function (err) {
+          alert('保存失败，请稍后重试。');
+          console.error(err);
+        })
+        .then(function () {
+          button.disabled = false;
+          button.innerText = '提交委托';
+        });
+    }, false);
