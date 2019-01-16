@@ -12,7 +12,7 @@ block content
       legend 个人信息
 
       .form-group.row
-        label.col-form-label.col-sm-2.text-right(for="name") 姓名
+        label.col-form-label.col-sm-2.text-sm-right(for="name") 姓名
         .col-sm-10
           input#name.form-control(
             required,
@@ -21,7 +21,7 @@ block content
           )
 
       .form-group.row
-        label.col-form-label.col-sm-2.text-right(for="phone") 手机号
+        label.col-form-label.col-sm-2.text-sm-right(for="phone") 手机号
         .col-sm-10
           input#phone.form-control(
             required,
@@ -34,7 +34,7 @@ block content
       legend 房屋信息
 
       .form-group.row
-        label.col-form-label.col-sm-2.text-right(for="city") 所在地
+        label.col-form-label.col-sm-2.text-sm-right(for="city") 所在地
         .col-sm-10
           select#city.form-control(
             required,
@@ -45,7 +45,7 @@ block content
               option= city
 
       .form-group.row
-        label.col-form-label.col-sm-2.text-right(for="address") 详细地址
+        label.col-form-label.col-sm-2.text-sm-right(for="address") 详细地址
         .col-sm-10
           textarea#address.form-control(
             required,
@@ -55,7 +55,7 @@ block content
           )
 
       .form-group.row
-        label.col-form-label.col-sm-2.text-right(for="property") 物业类型
+        label.col-form-label.col-sm-2.text-sm-right(for="property") 物业类型
         .col-sm-10
           select#property.form-control(
             required,
@@ -66,10 +66,10 @@ block content
               option= property
 
       .form-group.row
-        label.col-form-label.col-sm-2.text-right 户型结构
+        label.col-form-label.col-sm-2.text-sm-right 户型结构
         .col-sm-10
           .row
-            .col-sm-4.mb-3
+            .col-sm-4.col-6.mb-3
               .input-group
                 input.form-control(
                   type="number",
@@ -79,7 +79,7 @@ block content
                 )
                 .input-group-append
                   span.input-group-text 室
-            .col-sm-4.mb-3
+            .col-sm-4.col-6.mb-3
               .input-group
                 input.form-control(
                   type="number",
@@ -89,7 +89,7 @@ block content
                 )
                 .input-group-append
                   span.input-group-text 厅
-            .col-sm-4.mb-3
+            .col-sm-4.col-6.mb-3
               .input-group
                 input.form-control(
                   type="number",
@@ -99,7 +99,7 @@ block content
                 )
                 .input-group-append
                   span.input-group-text 卫
-            .col-sm-4
+            .col-sm-4.col-6.mb-3
               .input-group
                 input.form-control(
                   type="number",
@@ -109,7 +109,7 @@ block content
                 )
                 .input-group-append
                   span.input-group-text 厨
-            .col-sm-4
+            .col-sm-4.col-6.mb-3
               .input-group
                 input.form-control(
                   type="number",
@@ -119,7 +119,7 @@ block content
                 )
                 .input-group-append
                   span.input-group-text 阳台
-            .col-sm-4
+            .col-sm-4.col-6.mb-3
               .input-group
                 input.form-control(
                   type="number",
@@ -131,8 +131,8 @@ block content
                   span.input-group-text 车位
 
       .form-group.row
-        label.col-form-label.col-sm-2.text-right(for="area") 房屋面积
-        .col-sm-5
+        label.col-form-label.col-sm-2.text-sm-right(for="area") 房屋面积
+        .col-sm-5.col-8
           input#area.form-control(
             required,
             name="area",
@@ -141,7 +141,7 @@ block content
             min="1"
             placeholder="房屋面积",
           )
-        .col-sm-3
+        .col-sm-3.col-4
           select.form-control(
             name="areaUnit",
           )
@@ -149,8 +149,8 @@ block content
             option 平方米
 
       .form-group.row
-        label.col-form-label.col-sm-2.text-right(for="price") 期望租金
-        .col-sm-5
+        label.col-form-label.col-sm-2.text-sm-right(for="price") 期望租金
+        .col-sm-5.col-8
           input#price.form-control(
             required,
             name="price",
@@ -159,7 +159,7 @@ block content
             min="1",
             placeholder="期望租金",
           )
-        .col-sm-3
+        .col-sm-3.col-4
           select.form-control(
             name="priceUnit",
           )
