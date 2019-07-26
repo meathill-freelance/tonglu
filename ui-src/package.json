@@ -24,14 +24,14 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "colors.css": "^3.0.0",
-    "popper.js": "^1.14.7",
-    "swiper": "^4.4.6"
+    "popper.js": "^1.15.0",
+    "swiper": "^4.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.3.3",
-    "@babel/preset-env": "^7.3.1",
-    "@babel/register": "^7.0.0",
-    "gulp": "^4.0.0",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.5.5",
+    "gulp": "^4.0.2",
     "gulp-pug": "^4.0.1",
     "gulp-rename": "^1.4.0",
     "gulp-stylus": "^2.7.0",
