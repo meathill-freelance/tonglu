@@ -17,13 +17,12 @@
   "author": "Meathill <meathill@gmail.com> (http://meathill.com/)",
   "license": "MIT",
   "dependencies": {
-    "bootstrap": "^4.6.0",
+    "bootstrap": "^5.1.0",
     "colors.css": "^3.0.0",
-    "popper.js": "^1.16.1",
-    "swiper": "^6.6.1"
+    "swiper": "^7.0.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.3",
-    "@babel/preset-env": "^7.14.2"
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.4"
   }
 }
