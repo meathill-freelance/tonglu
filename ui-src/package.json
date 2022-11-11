@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "description": "An official site theme for Tonglu based on WordPress.",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "build:pug": "pug demo -o html",
+    "build:stylus": "stylus stylus/screen.styl -o ../style.css --include-css --compress",
+    "build": "build:pug && build:stylus"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:meathill-freelance/tonglu.git"
@@ -19,10 +23,11 @@
   "dependencies": {
     "bootstrap": "^5.1.0",
     "colors.css": "^3.0.0",
-    "swiper": "^7.0.3"
+    "swiper": "^8.4.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.5",
-    "@babel/preset-env": "^7.15.4"
+    "pug": "^3.0.2",
+    "pug-cli": "1.0.0-alpha6",
+    "stylus": "^0.59.0"
   }
 }
