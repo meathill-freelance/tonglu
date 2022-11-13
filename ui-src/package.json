@@ -6,7 +6,7 @@
   "scripts": {
     "build:pug": "pug demo -o html",
     "build:stylus": "stylus stylus/screen.styl -o ../style.css --include-css --compress",
-    "build": "build:pug && build:stylus"
+    "build": "pnpm run build:pug && pnpm run build:stylus && ./build/template.js"
   },
   "repository": {
     "type": "git",
